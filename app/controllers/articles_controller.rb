@@ -42,7 +42,8 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        flash.notice = "Article '#{@article.title}' Updated!"
+        format.html { redirect_to @article }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
